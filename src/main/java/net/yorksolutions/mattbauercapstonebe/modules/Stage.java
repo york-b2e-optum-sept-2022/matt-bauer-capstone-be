@@ -7,10 +7,10 @@ import java.util.List;
 public class Stage {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    long id;
-    int index;
-    String prompt;
-    String responseType;
+    public long id;
+    public int index;
+    public String prompt;
+    public String responseType;
     @ElementCollection
-    List<String> responseOptions;
+    public List<String> responseOptions;
 }

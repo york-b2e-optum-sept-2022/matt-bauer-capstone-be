@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Response {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    long id;
-    String prompt;
-    String response;
+    public long id;
+    public String prompt;
+    public String response;
 }

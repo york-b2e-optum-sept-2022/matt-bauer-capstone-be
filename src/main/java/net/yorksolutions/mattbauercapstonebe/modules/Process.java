@@ -8,10 +8,10 @@ public class Process {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    long id;
+    public long id;
     @Column(unique = true)
-    String title;
+    public String title;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<Stage> questionList;
+    public Set<Stage> questionList;
 
 }

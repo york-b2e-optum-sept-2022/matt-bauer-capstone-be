@@ -8,9 +8,9 @@ import java.util.Set;
 public class FinishedProcess {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    long id;
-    String surveyTitle;
-    Date dateFinished;
+    public long id;
+    public String surveyTitle;
+    public Date dateFinished;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<Response> responseList;
+    public Set<Response> responseList;
 }
