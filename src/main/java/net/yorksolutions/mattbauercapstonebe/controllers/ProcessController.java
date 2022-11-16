@@ -31,4 +31,9 @@ public class ProcessController {
     public Process update(@RequestBody Process process){
         return this.processService.update(process);
     }
+
+    @DeleteMapping
+    public void delete(@RequestParam long id){
+        this.processService.delete(id);
+    }
 }

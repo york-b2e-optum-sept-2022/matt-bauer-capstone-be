@@ -28,4 +28,8 @@ public class ProcessService {
     public Process update(Process process) {
         return this.processRepository.save(process);
     }
+
+    public void delete(long id) {
+        this.processRepository.deleteById(id);
+    }
 }
