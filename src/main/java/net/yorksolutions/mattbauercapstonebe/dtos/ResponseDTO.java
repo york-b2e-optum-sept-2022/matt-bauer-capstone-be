@@ -1,4 +1,4 @@
-package net.yorksolutions.mattbauercapstonebe;
+package net.yorksolutions.mattbauercapstonebe.dtos;
 
 import net.yorksolutions.mattbauercapstonebe.modules.FinishedProcess;
 

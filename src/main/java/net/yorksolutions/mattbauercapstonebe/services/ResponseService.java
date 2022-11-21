@@ -1,80 +1,51 @@
 package net.yorksolutions.mattbauercapstonebe.services;
 
-import io.jsonwebtoken.*;
-import net.yorksolutions.mattbauercapstonebe.JsonWebToken;
-import net.yorksolutions.mattbauercapstonebe.ResponseDTO;
+import net.yorksolutions.mattbauercapstonebe.dtos.JwtDTO;
+import net.yorksolutions.mattbauercapstonebe.dtos.ResponseDTO;
 import net.yorksolutions.mattbauercapstonebe.modules.FinishedProcess;
 import net.yorksolutions.mattbauercapstonebe.repositories.ResponseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import javax.crypto.spec.SecretKeySpec;
-import java.security.Key;
-import java.sql.Date;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Base64;
-import java.util.UUID;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class ResponseService {
 
     ResponseRepository responseRepository;
-    JsonWebToken jsonWebToken;
+    JsonWebTokenService jsonWebToken;
 
     @Autowired
-    public ResponseService(ResponseRepository responseRepository, JsonWebToken jsonWebToken) {
+    public ResponseService(ResponseRepository responseRepository, JsonWebTokenService jsonWebToken) {
 
         this.responseRepository = responseRepository;
         this.jsonWebToken = jsonWebToken;
     }
+    public JwtDTO startNewSurvey(String userId) {
+        JwtDTO jwtResponse = new JwtDTO();
+        jwtResponse.jwt = this.jsonWebToken.createJws(userId);
+        return jwtResponse;
+    }
+    public void cancelResponse(String jwt) {
+        this.jsonWebToken.endUserSession(jwt);
+    }
 
-    public FinishedProcess create(ResponseDTO process) {
+    public ResponseDTO create(ResponseDTO process) {
         if (this.jsonWebToken.validateUserResponse(process.jwt)) {
             this.jsonWebToken.endUserSession(process.jwt);
-            return this.responseRepository.save(process.response);
+            this.responseRepository.save(process.response);
+            return process;
         }
-        return new FinishedProcess();
-        //TODO return with throw error
+        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
     }
 
     public Iterable<FinishedProcess> getAll() {
         return this.responseRepository.findAll();
     }
 
-    public void createJws() {
-        String userId = UUID.randomUUID().toString();
-        System.out.println("user id: " + userId);
-        String secret = JsonWebToken.getNewSecret();
-        Key key = this.jsonWebToken.getNewKey(secret);
-        String jwt = this.jsonWebToken.getNewJwt(key, userId);
-        System.out.println(jwt);
-        this.jsonWebToken.addActiveUser(key, userId, jwt);
-        System.out.println("validate token");
-        System.out.println(this.jsonWebToken.validateUserResponse(jwt));
-        if (this.jsonWebToken.validateUserResponse(jwt))
-            this.jsonWebToken.endUserSession(jwt);
-    }
-
-    public String startNewSurvey(String userId) {
-        String secret = JsonWebToken.getNewSecret();
-        Key key = this.jsonWebToken.getNewKey(secret);
-        String jwt = this.jsonWebToken.getNewJwt(key, userId);
-        this.jsonWebToken.addActiveUser(key, userId, jwt);
-        System.out.println(jwt);
-        return jwt;
-    }
-
-    public ResponseDTO updateCurrentResponse(ResponseDTO response) {
-
-        return response;
-    }
-
-    public void cancelResponse(String jwt) {
-        this.jsonWebToken.endUserSession(jwt);
-    }
 }
 
+//Old code used to explore how to use JWTs
 
 //   String secret2 = (UUID.randomUUID().toString() + UUID.randomUUID().toString() + UUID.randomUUID().toString()).replaceAll("-", "");
 //        String secret = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
