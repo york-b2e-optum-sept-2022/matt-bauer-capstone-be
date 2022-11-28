@@ -8,10 +8,33 @@ public class Process {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public long id;
+    private long id;
     @Column(unique = true)
-    public String title;
+    private String title;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    public Set<Stage> questionList;
+    private Set<Stage> questionList;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Set<Stage> getQuestionList() {
+        return questionList;
+    }
+
+    public void setQuestionList(Set<Stage> questionList) {
+        this.questionList = questionList;
+    }
 }

@@ -19,7 +19,7 @@ public class ProcessService {
 
     public Process create(String newProcessTitle) {
         Process process = new Process();
-        process.title = newProcessTitle;
+        process.setTitle(newProcessTitle);
         try{
             return this.processRepository.save(process);
         }

@@ -23,14 +23,17 @@ public class ResponseService {
     }
     public JwtDTO startNewSurvey(String userId) {
         JwtDTO jwtResponse = new JwtDTO();
+        //generate a new jwt, add userid to active users, and return jwt to client
         jwtResponse.jwt = this.jsonWebToken.createJws(userId);
         return jwtResponse;
     }
     public void cancelResponse(String jwt) {
+        //client has canceled survey before completion, remove active user associated with jwt
         this.jsonWebToken.endUserSession(jwt);
     }
 
     public ResponseDTO create(ResponseDTO process) {
+        //validate if jwt received with finished survey holds the userId
         if (this.jsonWebToken.validateUserResponse(process.jwt)) {
             this.jsonWebToken.endUserSession(process.jwt);
             this.responseRepository.save(process.response);
@@ -42,8 +45,6 @@ public class ResponseService {
     public Iterable<FinishedProcess> getAll() {
         return this.responseRepository.findAll();
     }
-
-
 }
 
 //Old code used to explore how to use JWTs

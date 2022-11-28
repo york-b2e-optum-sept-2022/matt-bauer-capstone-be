@@ -8,9 +8,41 @@ import java.util.Set;
 public class FinishedProcess {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public long id;
-    public String surveyTitle;
-    public Date dateFinished;
+    private long id;
+    private String surveyTitle;
+    private Date dateFinished;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    public Set<Response> responseList;
+    private Set<Response> responseList;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getSurveyTitle() {
+        return surveyTitle;
+    }
+
+    public void setSurveyTitle(String surveyTitle) {
+        this.surveyTitle = surveyTitle;
+    }
+
+    public Date getDateFinished() {
+        return dateFinished;
+    }
+
+    public void setDateFinished(Date dateFinished) {
+        this.dateFinished = dateFinished;
+    }
+
+    public Set<Response> getResponseList() {
+        return responseList;
+    }
+
+    public void setResponseList(Set<Response> responseList) {
+        this.responseList = responseList;
+    }
 }
