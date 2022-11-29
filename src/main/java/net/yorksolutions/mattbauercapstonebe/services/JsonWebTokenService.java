@@ -57,13 +57,14 @@ public class JsonWebTokenService {
 
     private String getNewJwt(Key key, String userSessionId) {
         Instant now = Instant.now();
+        Long minutesValid = 2L;
         return Jwts.builder()
                 // claim id is set to userid
                 .setId(userSessionId)
                 //issued now
                 .setIssuedAt(Date.from(now))
-                //expires in 10 minutes
-                .setExpiration(Date.from(now.plus(10L, ChronoUnit.MINUTES)))
+                //valid for minutesValid
+                .setExpiration(Date.from(now.plus(minutesValid, ChronoUnit.MINUTES)))
                 .signWith(key)
                 .compact();
     }

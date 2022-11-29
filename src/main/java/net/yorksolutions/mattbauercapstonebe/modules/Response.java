@@ -10,6 +10,9 @@ public class Response {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+
+    private int index;
+
     private String prompt;
     private String response;
 
@@ -45,5 +48,12 @@ public class Response {
 
     public void setResponseType(String responseType) {
         this.responseType = responseType;
+    }
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }
