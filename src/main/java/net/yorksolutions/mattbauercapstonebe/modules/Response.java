@@ -13,6 +13,8 @@ public class Response {
     private String prompt;
     private String response;
 
+    private String responseType;
+
     public long getId() {
         return id;
     }
@@ -35,5 +37,13 @@ public class Response {
 
     public void setResponse(String response) {
         this.response = response;
+    }
+
+    public String getResponseType() {
+        return responseType;
+    }
+
+    public void setResponseType(String responseType) {
+        this.responseType = responseType;
     }
 }

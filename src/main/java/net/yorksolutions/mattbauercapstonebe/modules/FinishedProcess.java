@@ -11,6 +11,7 @@ public class FinishedProcess {
     private long id;
     private String surveyTitle;
     private Date dateFinished;
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Response> responseList;
 
