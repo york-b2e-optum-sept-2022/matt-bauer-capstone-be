@@ -1,5 +1,8 @@
 package net.yorksolutions.mattbauercapstonebe.modules;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,15 +21,13 @@ public class Stage {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public int getIndex() {
         return index;
     }
 
     public void setIndex(int index) {
+        if (index < 0)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         this.index = index;
     }
 
@@ -35,6 +36,8 @@ public class Stage {
     }
 
     public void setPrompt(String prompt) {
+        if (prompt.length() == 0)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         this.prompt = prompt;
     }
 
@@ -43,7 +46,9 @@ public class Stage {
     }
 
     public void setResponseType(String responseType) {
-        this.responseType = responseType;
+        if (responseType.equals("TEXT") || responseType.equals("TRUE/FALSE") || responseType.equals("MULTIPLE CHOICE"))
+            this.responseType = responseType;
+        else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     public List<String> getResponseOptions() {
@@ -51,6 +56,10 @@ public class Stage {
     }
 
     public void setResponseOptions(List<String> responseOptions) {
-        this.responseOptions = responseOptions;
+        if (responseType.equals("TRUE/FALSE") && responseOptions.size() == 2 ||
+                responseType.equals("TEXT") && responseOptions.size() == 0 ||
+                responseType.equals("MULTIPLE CHOICE") && responseOptions.size() > 0)
+            this.responseOptions = responseOptions;
+        else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 }

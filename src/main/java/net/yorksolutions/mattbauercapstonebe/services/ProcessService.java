@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+
 @Service
 public class ProcessService {
 
@@ -20,10 +22,9 @@ public class ProcessService {
     public Process create(String newProcessTitle) {
         Process process = new Process();
         process.setTitle(newProcessTitle);
-        try{
+        try {
             return this.processRepository.save(process);
-        }
-        catch (RuntimeException exception){
+        } catch (RuntimeException exception) {
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
     }
@@ -33,15 +34,27 @@ public class ProcessService {
     }
 
     public Process update(Process process) {
-        try{
-            return this.processRepository.save(process);
+        Optional<Process> processOpt = this.processRepository.findById(process.getId());
+        if (processOpt.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        catch (RuntimeException exception){
+        Process dbProcess = processOpt.get();
+        if (dbProcess.getTitle().equals(process.getTitle())) {
+            return this.processRepository.save(process);
+        } else try {
+            dbProcess.setTitle(process.getTitle());
+            return this.processRepository.save(dbProcess);
+        } catch (RuntimeException exception) {
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
     }
 
     public void delete(long id) {
-        this.processRepository.deleteById(id);
+        Optional<Process> processOpt = this.processRepository.findById(id);
+        if (processOpt.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        Process dbProcess = processOpt.get();
+        this.processRepository.delete(dbProcess);
     }
 }

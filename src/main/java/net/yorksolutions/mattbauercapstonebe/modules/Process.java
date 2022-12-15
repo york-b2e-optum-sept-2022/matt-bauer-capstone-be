@@ -1,5 +1,8 @@
 package net.yorksolutions.mattbauercapstonebe.modules;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -18,15 +21,13 @@ public class Process {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
+       if(title.length() == 0)
+           throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         this.title = title;
     }
 

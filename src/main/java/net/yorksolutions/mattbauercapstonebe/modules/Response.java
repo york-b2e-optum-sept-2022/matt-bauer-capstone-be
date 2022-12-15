@@ -1,5 +1,8 @@
 package net.yorksolutions.mattbauercapstonebe.modules;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,15 +25,13 @@ public class Response {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getPrompt() {
         return prompt;
     }
 
     public void setPrompt(String prompt) {
+        if (prompt.length() == 0)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         this.prompt = prompt;
     }
 
@@ -39,6 +40,8 @@ public class Response {
     }
 
     public void setResponse(String response) {
+        if (response.length() == 0)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         this.response = response;
     }
 
@@ -47,13 +50,18 @@ public class Response {
     }
 
     public void setResponseType(String responseType) {
-        this.responseType = responseType;
+        if (responseType.equals("TEXT") || responseType.equals("TRUE/FALSE") || responseType.equals("MULTIPLE CHOICE"))
+            this.responseType = responseType;
+        else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
+
     public int getIndex() {
         return index;
     }
 
     public void setIndex(int index) {
+        if (index < 0)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         this.index = index;
     }
 }
