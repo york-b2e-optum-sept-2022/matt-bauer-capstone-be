@@ -1,0 +1,587 @@
+POST http://10.110.87.54:8080/api/process/load-test
+Content-Type: application/json
+
+{
+"id": 1,
+"title": "Sample Survey",
+"questionList": [
+{
+"id": 2,
+"index": 0,
+"prompt": "What is your name?",
+"responseType": "TEXT",
+"responseOptions": []
+},
+{
+"id": 5,
+"index": 4,
+"prompt": "I own at least 1 pet",
+"responseType": "TRUE/FALSE",
+"responseOptions": [
+"True",
+"False"
+]
+},
+{
+"id": 4,
+"index": 5,
+"prompt": "What is your eye color?",
+"responseType": "MULTIPLE CHOICE",
+"responseOptions": [
+"Blue",
+"Green",
+"Brown",
+"Other"
+]
+},
+{
+"id": 6,
+"index": 3,
+"prompt": "What is your profession?",
+"responseType": "TEXT",
+"responseOptions": []
+},
+{
+"id": 3,
+"index": 1,
+"prompt": "I live in Minnesota",
+"responseType": "TRUE/FALSE",
+"responseOptions": [
+"True",
+"False"
+]
+},
+{
+"id": 7,
+"index": 2,
+"prompt": "My main mode of transportation is",
+"responseType": "MULTIPLE CHOICE",
+"responseOptions": [
+"Car",
+"Public Transportation",
+"Taxi/Uber/Lyft",
+"Biking",
+"Walking"
+]
+}
+]
+}
+
+######
+POST http://10.110.87.54:8080/api/process/load-test
+Content-Type: application/json
+
+{
+"id": 8,
+"title": "Test Survey",
+"questionList": [
+{
+"id": 32,
+"index": 4,
+"prompt": "Quest 5",
+"responseType": "TEXT",
+"responseOptions": []
+},
+{
+"id": 33,
+"index": 1,
+"prompt": "Quest 2",
+"responseType": "MULTIPLE CHOICE",
+"responseOptions": [
+"a",
+"b",
+"c",
+"d"
+]
+},
+{
+"id": 28,
+"index": 0,
+"prompt": "Quest 1",
+"responseType": "TRUE/FALSE",
+"responseOptions": [
+"True",
+"False"
+]
+},
+{
+"id": 30,
+"index": 5,
+"prompt": "Quest 6",
+"responseType": "TRUE/FALSE",
+"responseOptions": [
+"True",
+"False"
+]
+},
+{
+"id": 31,
+"index": 2,
+"prompt": "Quest 3",
+"responseType": "TEXT",
+"responseOptions": []
+},
+{
+"id": 29,
+"index": 3,
+"prompt": "Quest 4",
+"responseType": "MULTIPLE CHOICE",
+"responseOptions": [
+"alpha",
+"beta",
+"cappa",
+"delta"
+]
+}
+]
+}
+
+######
+POST http://10.110.87.54:8080/api/process/load-test
+Content-Type: application/json
+
+{
+"id": 9,
+"title": "Prototype",
+"questionList": [
+{
+"id": 46,
+"index": 0,
+"prompt": "What is your favorite fruit?",
+"responseType": "TEXT",
+"responseOptions": []
+},
+{
+"id": 45,
+"index": 3,
+"prompt": "Do you eat breakfast everyday?",
+"responseType": "TRUE/FALSE",
+"responseOptions": [
+"True",
+"False"
+]
+},
+{
+"id": 47,
+"index": 4,
+"prompt": "What time do you go to sleep at night?",
+"responseType": "TEXT",
+"responseOptions": []
+},
+{
+"id": 48,
+"index": 1,
+"prompt": "Do you drink 8 oz. of water each day?",
+"responseType": "TRUE/FALSE",
+"responseOptions": [
+"True",
+"False"
+]
+},
+{
+"id": 44,
+"index": 2,
+"prompt": "How much sleep do you get each night?",
+"responseType": "MULTIPLE CHOICE",
+"responseOptions": [
+"less than 6 hours",
+"between 6 and 9 hours",
+"more than 9 hours"
+]
+}
+]
+}
+
+######
+POST http://10.110.87.54:8080/api/process/load-test
+Content-Type: application/json
+
+{
+"id": 10,
+"title": "Survey Draft",
+"questionList": [
+{
+"id": 54,
+"index": 0,
+"prompt": "Text question draft",
+"responseType": "TEXT",
+"responseOptions": []
+},
+{
+"id": 52,
+"index": 1,
+"prompt": "true or false question draft",
+"responseType": "TRUE/FALSE",
+"responseOptions": [
+"True",
+"False"
+]
+},
+{
+"id": 53,
+"index": 2,
+"prompt": "multiple choice question draft draft",
+"responseType": "MULTIPLE CHOICE",
+"responseOptions": [
+"D",
+"R",
+"A",
+"F",
+"T"
+]
+}
+]
+}
+
+
+######
+POST http://10.110.87.54:8080/api/process/load-test
+Content-Type: application/json
+
+{
+"id": 11,
+"title": "Example Questionaire",
+"questionList": [
+{
+"id": 64,
+"index": 2,
+"prompt": "My most used method of exercise is",
+"responseType": "MULTIPLE CHOICE",
+"responseOptions": [
+"walking",
+"jogging",
+"swimming",
+"playing a sport",
+"yoga",
+"lifting weights",
+"other"
+]
+},
+{
+"id": 61,
+"index": 1,
+"prompt": "Generally, I am in good health",
+"responseType": "TRUE/FALSE",
+"responseOptions": [
+"True",
+"False"
+]
+},
+{
+"id": 63,
+"index": 0,
+"prompt": "How many minutes do you exercise a week?",
+"responseType": "TEXT",
+"responseOptions": []
+},
+{
+"id": 62,
+"index": 3,
+"prompt": "What is your age?",
+"responseType": "MULTIPLE CHOICE",
+"responseOptions": [
+"under 20",
+"between 20 and 40",
+"between 40 and 60",
+"over 60"
+]
+}
+]
+}
+
+#####NEED TO CHANGE IP!
+#######################################################################
+POST http://10.110.87.54:8080/api/response/load-test
+Content-Type: application/json
+
+
+
+{
+"id": 79,
+"surveyTitle": "Test Survey",
+"dateFinished": "2022-11-29T20:59:04.369+00:00",
+"responseList": [
+{
+"id": 82,
+"index": 0,
+"prompt": "Quest 1",
+"response": "True",
+"responseType": "TRUE/FALSE"
+},
+{
+"id": 83,
+"index": 3,
+"prompt": "Quest 4",
+"response": "alpha",
+"responseType": "MULTIPLE CHOICE"
+},
+{
+"id": 84,
+"index": 4,
+"prompt": "Quest 5",
+"response": "5th",
+"responseType": "TEXT"
+},
+{
+"id": 81,
+"index": 5,
+"prompt": "Quest 6",
+"response": "False",
+"responseType": "TRUE/FALSE"
+},
+  {
+"id": 80,
+"index": 1,
+"prompt": "Quest 2",
+"response": "b",
+"responseType": "MULTIPLE CHOICE"
+},
+{
+"id": 85,
+"index": 2,
+"prompt": "Quest 3",
+"response": "3rd",
+"responseType": "TEXT"
+}
+]
+}
+
+
+############
+  POST http://10.110.87.54:8080/api/response/load-test
+Content-Type: application/json
+
+
+{
+"id": 86,
+"surveyTitle": "Sample Survey",
+"dateFinished": "2022-11-29T21:03:53.522+00:00",
+"responseList": [
+{
+"id": 91,
+"index": 4,
+"prompt": "I own at least 1 pet",
+"response": "True",
+"responseType": "TRUE/FALSE"
+},
+{
+"id": 87,
+"index": 5,
+"prompt": "What is your eye color?",
+"response": "Brown",
+"responseType": "MULTIPLE CHOICE"
+},
+{
+"id": 88,
+"index": 3,
+"prompt": "What is your profession?",
+"response": "engineer",
+"responseType": "TEXT"
+},
+{
+"id": 90,
+"index": 1,
+"prompt": "I live in Minnesota",
+"response": "False",
+"responseType": "TRUE/FALSE"
+},
+{
+"id": 92,
+"index": 2,
+"prompt": "My main mode of transportation is",
+"response": "Biking",
+"responseType": "MULTIPLE CHOICE"
+},
+{
+"id": 89,
+"index": 0,
+"prompt": "What is your name?",
+"response": "billy",
+"responseType": "TEXT"
+}
+]
+}
+
+
+############
+ POST http://10.110.87.54:8080/api/response/load-test
+Content-Type: application/json
+
+{
+"id": 93,
+"surveyTitle": "Survey Draft",
+"dateFinished": "2022-11-29T21:54:36.107+00:00",
+"responseList": [
+{
+"id": 94,
+"index": 2,
+"prompt": "multiple choice question draft draft",
+"response": "T",
+"responseType": "MULTIPLE CHOICE"
+},
+{
+"id": 95,
+"index": 0,
+"prompt": "Text question draft",
+"response": "sample",
+"responseType": "TEXT"
+},
+{
+"id": 96,
+"index": 1,
+"prompt": "true or false question draft",
+"response": "False",
+"responseType": "TRUE/FALSE"
+}
+]
+}
+
+
+############
+  POST http://10.110.87.54:8080/api/response/load-test
+Content-Type: application/json
+
+{
+"id": 97,
+"surveyTitle": "Survey Draft",
+"dateFinished": "2022-11-29T21:55:10.258+00:00",
+"responseList": [
+{
+"id": 98,
+"index": 1,
+"prompt": "true or false question draft",
+"response": "True",
+"responseType": "TRUE/FALSE"
+},
+{
+"id": 100,
+"index": 2,
+"prompt": "multiple choice question draft draft",
+"response": "R",
+"responseType": "MULTIPLE CHOICE"
+},
+{
+"id": 99,
+"index": 0,
+"prompt": "Text question draft",
+"response": "example",
+"responseType": "TEXT"
+}
+]
+}
+
+
+############
+  POST http://10.110.87.54:8080/api/response/load-test
+Content-Type: application/json
+
+{
+"id": 101,
+"surveyTitle": "Survey Draft",
+"dateFinished": "2022-11-30T17:45:46.471+00:00",
+"responseList": [
+{
+"id": 102,
+"index": 2,
+"prompt": "multiple choice question draft draft",
+"response": "R",
+"responseType": "MULTIPLE CHOICE"
+},
+{
+"id": 103,
+"index": 1,
+"prompt": "true or false question draft",
+"response": "True",
+"responseType": "TRUE/FALSE"
+},
+{
+"id": 104,
+"index": 0,
+"prompt": "Text question draft",
+"response": "tett",
+"responseType": "TEXT"
+}
+]
+}
+
+
+############
+  POST http://10.110.87.54:8080/api/response/load-test
+Content-Type: application/json
+
+{
+"id": 126,
+"surveyTitle": "Sample Survey",
+"dateFinished": "2022-12-15T17:15:47.460+00:00",
+"responseList": [
+{
+"id": 130,
+"index": 3,
+"prompt": "What is your profession?",
+"response": "SWE",
+"responseType": "TEXT"
+},
+{
+"id": 131,
+"index": 0,
+"prompt": "What is your name?",
+"response": "Matt",
+"responseType": "TEXT"
+},
+{
+"id": 127,
+"index": 1,
+"prompt": "I live in Minnesota",
+"response": "True",
+"responseType": "TRUE/FALSE"
+},
+{
+"id": 128,
+"index": 2,
+"prompt": "My main mode of transportation is",
+"response": "Car",
+"responseType": "MULTIPLE CHOICE"
+},
+{
+"id": 129,
+"index": 4,
+"prompt": "I own at least 1 pet",
+"response": "False",
+"responseType": "TRUE/FALSE"
+}
+]
+}
+
+
+############
+  POST http://10.110.87.54:8080/api/response/load-test
+Content-Type: application/json
+
+{
+"id": 132,
+"surveyTitle": "Survey Draft",
+"dateFinished": "2022-12-15T17:20:29.341+00:00",
+"responseList": [
+{
+"id": 133,
+"index": 1,
+"prompt": "true or false question draft",
+"response": "True",
+"responseType": "TRUE/FALSE"
+},
+{
+"id": 134,
+"index": 0,
+"prompt": "Text question draft",
+"response": "test",
+"responseType": "TEXT"
+},
+{
+"id": 135,
+"index": 2,
+"prompt": "multiple choice question draft draft",
+"response": "A",
+"responseType": "MULTIPLE CHOICE"
+}
+]
+}
