@@ -45,5 +45,10 @@ public class ResponseService {
     public Iterable<FinishedProcess> getAll() {
         return this.responseRepository.findAll();
     }
+
+    //Dev purposes only
+    public FinishedProcess createTestSet(FinishedProcess newProcess) {
+        return this.responseRepository.save(newProcess);
+    }
 }
 

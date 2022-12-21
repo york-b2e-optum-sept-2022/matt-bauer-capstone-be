@@ -32,9 +32,15 @@ public class ProcessController {
         return this.processService.update(process);
     }
 
-    @DeleteMapping
+    @PutMapping("/delete")
     public void delete(@RequestParam long id){
         this.processService.delete(id);
+    }
+
+    //Dev and test purposes only
+    @PostMapping("/load-test")
+    public Process createTestData(@RequestBody Process newProcess){
+        return this.processService.createTestSet(newProcess);
     }
 
 }

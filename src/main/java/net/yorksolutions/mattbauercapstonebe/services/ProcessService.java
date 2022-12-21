@@ -57,4 +57,9 @@ public class ProcessService {
         Process dbProcess = processOpt.get();
         this.processRepository.delete(dbProcess);
     }
+
+    //Dev purposes only
+    public Process createTestSet(Process newProcess) {
+        return this.processRepository.save(newProcess);
+    }
 }
